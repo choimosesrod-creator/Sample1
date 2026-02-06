@@ -4,6 +4,7 @@ import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Copy, CheckCircle2, Boxes, Database, LogOut, Server } from "lucide-react";
+import { LOGIN_PATH, SIGNUP_PATH } from "@/constants/auth";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser-client";
 import { useCurrentUser } from "@/features/auth/hooks/useCurrentUser";
 
@@ -121,13 +122,13 @@ export default function Home() {
     return (
       <div className="flex items-center gap-3 text-sm">
         <Link
-          href="/login"
+          href={LOGIN_PATH}
           className="rounded-md border border-slate-600 px-3 py-1 text-slate-200 transition hover:border-slate-400 hover:bg-slate-800"
         >
           로그인
         </Link>
         <Link
-          href="/signup"
+          href={SIGNUP_PATH}
           className="rounded-md bg-slate-100 px-3 py-1 text-slate-900 transition hover:bg-white"
         >
           회원가입

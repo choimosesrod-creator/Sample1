@@ -1,10 +1,26 @@
 import { match } from "ts-pattern";
 
-const PUBLIC_PATHS = ["/", "/login", "/signup"] as const;
+const PUBLIC_PATHS = [
+  "/",
+  "/login",
+  "/signup",
+  "/onboarding/advertiser",
+  "/onboarding/influencer",
+] as const;
 const PUBLIC_PREFIXES = ["/_next", "/api", "/favicon", "/static", "/docs", "/images"] as const;
 
 export const LOGIN_PATH = "/login";
 export const SIGNUP_PATH = "/signup";
+export const ADVERTISER_ONBOARDING_PATH = "/onboarding/advertiser";
+export const INFLUENCER_ONBOARDING_PATH = "/onboarding/influencer";
+
+export type AppRole = "advertiser" | "influencer";
+
+export const getSignupRedirectForRole = (role: AppRole): string => {
+  const next =
+    role === "advertiser" ? ADVERTISER_ONBOARDING_PATH : INFLUENCER_ONBOARDING_PATH;
+  return `${LOGIN_PATH}?next=${encodeURIComponent(next)}`;
+};
 export const AUTH_ENTRY_PATHS = [LOGIN_PATH, SIGNUP_PATH] as const;
 export const isAuthEntryPath = (
   pathname: string

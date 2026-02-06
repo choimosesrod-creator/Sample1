@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import { SIGNUP_PATH } from "@/constants/auth";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser-client";
 import { useCurrentUser } from "@/features/auth/hooks/useCurrentUser";
 
@@ -122,7 +123,7 @@ export default function LoginPage({ params }: LoginPageProps) {
           <p className="text-xs text-slate-500">
             계정이 없으신가요?{" "}
             <Link
-              href="/signup"
+              href={SIGNUP_PATH}
               className="font-medium text-slate-700 underline hover:text-slate-900"
             >
               회원가입
